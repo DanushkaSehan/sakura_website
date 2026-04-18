@@ -59,6 +59,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -66,6 +67,7 @@ body {
     background: var(--bg);
     color: var(--text-2);
     line-height: 1.7;
+    overflow-x: hidden;
 }
 
 img {
@@ -91,17 +93,31 @@ h4 {
     line-height: 1.25;
 }
 
-::-webkit-scrollbar {
-    width: 5px;
+/* Scrollbar — desktop only */
+@media (min-width: 861px) {
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--bg-2);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--pink-mid);
+        border-radius: 3px;
+    }
 }
 
-::-webkit-scrollbar-track {
-    background: var(--bg-2);
-}
+/* Hide scrollbar completely on mobile */
+@media (max-width: 860px) {
+    ::-webkit-scrollbar {
+        display: none;
+    }
 
-::-webkit-scrollbar-thumb {
-    background: var(--pink-mid);
-    border-radius: 3px;
+    * {
+        scrollbar-width: none;
+    }
 }
 
 /* ── Container ─────────────────────────────────────────────── */
@@ -403,6 +419,7 @@ section {
     align-items: center;
     justify-content: center;
     text-align: center;
+    overflow: hidden;
 }
 
 .hero-overlay {
